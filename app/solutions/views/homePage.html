@@ -1,10 +1,157 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{{page}}
-</body>
-</html>
+<header>
+    <div class="backgroundImg">
+        <div class="image">
+            <img src="images/Banner Image.png" class="img-responsive">
+        </div>
+        <div class="overlay">
+            <div class="headings">
+                <div>
+                   <label>pitney bowes
+                         <a href="http://pb.com" target="_blank" class="pb-header-mark"></a>
+                   </label>
+                   
+                </div>
+                <h1 style="font-size: 55px;" class="pb-underline">Startup Pack for SMBs</h1>
+                <div class="catlogBtn">
+                    <a href="" class="magenta-btn">Download PB Startup Catalog</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="header-title">
+        <div class="container">
+            <div class="title">
+                <a href="http://pb.com" target="_blank" class="pb-header-mark"></a>
+                <label>pitney bowes</label>
+            </div>
+            <div class="userIcons pull-right">
+                <a href="" class="loginBtn">SIGNUP \ LOGIN</a>
+                <a href="" class="socialIcon">
+                    <img src="images/1-FB.png">
+                </a>
+                <a href="" class="socialIcon">
+                    <img src="images/2-gplus.png">
+                </a>
+                <a href="" class="socialIcon">
+                    <img src="images/3-Twitter.png">
+                </a>
+                <a href="" class="socialIcon">
+                    <img src="images/4-Linkdin.png">
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</header>
+<section id="quickStartGuide">
+    <div class="container">
+        <div class="displayFlex flex-center">
+            <h2 class="pb-underline">Quick Start Guide</h2>
+        </div>
+        <div class="displayFlex flex-center">
+            <h5>Infinite Possibilities, One Platform</h5>
+        </div>
+
+        <div class="row qg-cards">
+            <div class="col-md-3">
+                <div class="qg-card">
+                    <div class="icon">
+                        <div>
+                            <img src="images/Discovery Icon copy.png">
+                            <h3 class="magenta-text">Discovery</h3>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Recognise true project definition Establish effective communication channel Define project goals
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="qg-card">
+                    <div class="icon">
+                        <div>
+                            <img src="images/Design Icon.png">
+                            <h3 class="magenta-text">Design</h3>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Comply on initial phase of plan details. 
+                            Re-analyze discover phase plan outline
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="qg-card">
+                    <div class="icon">
+                        <div>
+                            <img src="images/Development Icon.png">
+                            <h3 class="magenta-text">Development</h3>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Address issues with resolution and further recommendation Approve the detail plan
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="qg-card">
+                    <div class="icon">
+                        <div>
+                            <img src="images/Deployment Icon.png">
+                            <h3 class="magenta-text">Deployment</h3>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Check for test environment set up and test application process Agree to full support on occasional repair and reporting Be ready with deliverables
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="profiles">
+    <div class="container">
+        <div class="displayFlex flex-center">
+            <h2 class="pb-underline magenta-text">Who you are building for</h2>
+        </div>
+
+        <div class="row qg-cards">
+            <div class="col-md-3 " ng-repeat="profile in profiles">
+                <div class="profile-card">
+                    <div class="icon">
+                        <div>
+                            <img ng-src="{{'images/'+profile.icon}}">
+                            <h3 class="magenta-text">{{profile.name}}</h3>
+                        </div>
+                    </div>
+                    <div class="desc">
+                        <p>
+                            {{profile.desc}}
+                        </p>
+                    </div>
+                    <div class="questions">
+                        <p ng-repeat="q in profile.questions">"{{q}}"</p>
+                        
+                    </div>
+                    <div class="footer">
+                        <h4>Similar Profiles</h4>
+                        <p ng-repeat="simipro in profile.similarProfiles">
+                            {{simipro}}
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>   
+
+        </div>
+    </div>
+</section>

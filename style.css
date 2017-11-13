@@ -1,0 +1,163 @@
+header{
+	background-image: none !important;
+	position: relative !important;
+	color: #fff;
+}
+header .backgroundImg{
+    z-index: -1;
+}
+header .header-title{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+header .overlay{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .container{
+    height: 75px;
+}
+header .container .title{
+    display: flex;
+    height: 100%;
+    float: left;
+    align-items: center;
+}
+header .container .title *{
+    margin:0;
+    margin-right: 10px !important;
+}
+header .container .userIcons {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+header .container .userIcons > *{
+    margin: 0;
+    margin-left: 15px;
+}
+header .overlay .headings *{
+    text-align: center;
+    color: #fff;
+    margin: 0;
+}
+header .overlay .headings .pb-header-mark{
+   float: none;
+   vertical-align: middle;
+    margin-left: 10px;
+}
+header .overlay .headings label{
+    font-size: 24px;
+}
+header .overlay .headings .catlogBtn{
+    margin-top: 35px;
+}
+a.magenta-btn{
+    background: #cf0989;
+    padding: 15px 40px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+.pb-underline{
+    position: relative;
+}
+.pb-underline::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 40%;
+    height: 4px;
+    right: 0;
+    background-image: linear-gradient(90deg, #3e53a4 0%, #cf0989 100%);
+}
+.userIcons a.loginBtn{
+    background: #fff;
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+.socialIcon img{
+    width: 40px;
+}
+.displayFlex{
+    display: flex;
+}
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+#quickStartGuide h2{
+    color: #3e53a4;
+    margin-bottom: 0;
+}
+.qg-card,.profile-card{
+    text-align: center;
+}
+.magenta-text{
+    color: #cf0989;
+}
+.qg-cards{
+    margin-top: 50px;
+}
+section#quickStartGuide,section#profiles{
+    padding: 50px 0;
+}
+section#profiles h2{
+    margin: o
+}
+.questions{
+    background: #EBEBEB;
+    padding: 10px;
+}
+section#profiles .desc,section#profiles .footer{
+    padding: 10px;
+}
+.profile-card {
+    height: 716px;
+    box-shadow: 0px 0px 4px grey;
+    border-radius: 2px;
+    position: relative;
+    padding-top: 10px;
+    background: #fff;
+    z-index: 1;
+}
+section#profiles h3,section#profiles h4{
+    color: #3e53a4;
+}
+section#profiles .footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+section#profiles{
+    background-color: white; /* fallback */
+  background-image: -webkit-linear-gradient(top, black 70%, white 30%);
+  background-image:    -moz-linear-gradient(top, black 70%, white 30%);
+  background-image:      -o-linear-gradient(top, black 70%, white 30%);
+  background-image:         linear-gradient(to bottom, black 70%, white 30%);
+   position: relative;
+}
+section#profiles::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("images/Group 15.png");
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.qg-card .icon img{
+    width: 60px;
+    height: 60px;
+}
