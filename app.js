@@ -11,6 +11,5 @@ startupSmb.config(['$stateProvider', '$urlRouterProvider',
             })
 
         $urlRouterProvider.otherwise('/home');
-    }])
-;
+    }]);
 
