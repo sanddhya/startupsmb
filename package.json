@@ -1,0 +1,16 @@
+{
+  "name": "pbsmb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "angular-ui-router": "^0.4.3"
+  }
+}
