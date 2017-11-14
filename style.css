@@ -65,6 +65,7 @@ a.magenta-btn{
     padding: 15px 40px;
     border-radius: 10px;
     text-decoration: none;
+    color: #fff;
 }
 .pb-underline{
     position: relative;
@@ -260,4 +261,17 @@ footer .socialLinks .icon {
 }
 footer .socialLinks .icon img{
     width: 100%;
+}
+section#downloadCatlog{
+    background: black;
+}
+section#downloadCatlog .btnWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 0;
+}
+section#downloadCatlog h2{
+    margin: 0;
+    color: #e1e1e1;
 }
