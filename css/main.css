@@ -170,18 +170,36 @@ h3 > span {
 
 .content {
     position: relative;
+    /*
     float: left;
+    */
     padding: 10px;
     width: 97%;
-    border: 1px solid black;
     height: 100%;
     overflow-y: auto;
     background: white;
 }
 
+.gradient-bar{
+    position: relative;
+    padding-right: 20px;
+}
+.gradient-bar::after{
+    position: absolute;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 6px;
+    top:0;
+    right: 5px;
+    background-image: linear-gradient(90deg, #3e53a4 0%, #cf0989 100%);
+}
+
 .gradientCol {
     position: relative;
+    /*
     float: left;
+    */
     width: 2%;
     background-image: linear-gradient(90deg, #3e53a4 0%, #cf0989 100%);
     grid-column: 1 / span 2;
