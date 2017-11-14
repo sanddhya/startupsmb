@@ -6,8 +6,36 @@
     display: block;
     width: 100%;
     height: auto;
-    background-color: lightgrey;
+    background-color: darkgray;
+    background-image: url('../images/BG.png');
     padding: 10px;
+}
+
+.deviceSpecification {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-image: url('../images/Sendpro C Series Image.png');
+}
+
+.deviceSpecContent {
+    padding: 50px;
+    /*
+    background-image: url('../images/Sendpro C Series Image.png');
+    */
+}
+
+.appDescDevice .qSectionLine {
+    padding: 5px;
+}
+
+.deviceSpecCard {
+    background: white;
+    position: relative;
+    padding: 10px;
+    margin: auto;
+    box-shadow: 1px 1px 1px 1px;
 }
 
 .faqContainer {
@@ -88,13 +116,14 @@
 
 .faqImage {
     height: 100%;
+    padding-bottom: 10px;
 }
 
 .faqText {
-    background: dodgerblue;
+    background: #4F46A1;
     color: white;
-    padding: 19px;
-    height: 100%;
+    padding: 22px;
+    background-image: url('../images/BG.png');
 }
 
 h3 > span {
@@ -103,7 +132,7 @@ h3 > span {
 }
 
 .qSection {
-    margin-top: 41px;
+    margin-top: 40px;
     font-size: 17px;
 }
 
@@ -114,31 +143,25 @@ h3 > span {
 .mainContentWrapper {
     margin-top: 10px;
     background: url("../images/BG Image 2.png");
-    height: 100%;
     width: 100%;
 }
 
 .importContentWrapper {
     margin-top: 10px;
     background: url("../images/BG Image 3.png");
-    height: 95%;
     width: 100%;
 }
 
 .mainContent {
-    width: 50%;
-    margin: auto;
-    height: 790px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
     -webkit-flex-flow: row wrap;
     justify-content: space-around;
 }
 
 .subSection {
-    width: 46%;
-    float: left;
-    height: 85%;
-    position: relative;
+    height: 100%;
     background: white;
     margin: auto;
 }
@@ -151,6 +174,7 @@ h3 > span {
     border: 1px solid black;
     height: 100%;
     overflow-y: auto;
+    background: white;
 }
 
 .gradientCol {
@@ -170,20 +194,9 @@ h3 > span {
     overflow-y: auto;
 }
 
-.appDesc {
+.appDesc, .appDescDevice {
     margin-top: 10px;
-    height: 18%;
     overflow-y: auto;
-}
-
-@media only screen and (max-width: 500px) {
-    .card {
-        height: 420px !important;
-    }
-
-    .mainContent {
-        width: 85%;
-    }
 }
 
 .appDesc2 {
@@ -201,4 +214,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
+}
+
+.pinkButt {
+    background-color: #cf0989;
+    border-radius: 37px !important;
+    color: white;
+    margin: auto;
 }
