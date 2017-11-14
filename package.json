@@ -14,6 +14,6 @@
     "angular-ui-router": "^0.4.3"
   },
   "dependencies": {
-    "pb-design-system": "^4.0.4"
+    "pb-design-system": "^3.2.1"
   }
 }
