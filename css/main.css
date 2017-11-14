@@ -67,6 +67,10 @@
     margin: auto;
 }
 
+.subheading.pb-underline::after {
+    left: 0;
+}
+
 .card {
     position: relative;
     padding: 15px;
@@ -124,7 +128,6 @@
     background: #4F46A1;
     color: white;
     padding-left: 30px;
-    padding-bottom: 41px;
     background-image: url('../images/BG.png');
 }
 
@@ -180,17 +183,18 @@ h3 > span {
     background: white;
 }
 
-.gradient-bar{
+.gradient-bar {
     position: relative;
     padding-right: 20px;
 }
-.gradient-bar::after{
+
+.gradient-bar::after {
     position: absolute;
     content: '';
     display: block;
     height: 100%;
     width: 6px;
-    top:0;
+    top: 0;
     right: 5px;
     background-image: linear-gradient(90deg, #3e53a4 0%, #cf0989 100%);
 }
