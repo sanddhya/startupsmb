@@ -88,9 +88,9 @@ a.magenta-btn {
 .pb-underline::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -3px;
     width: 40%;
-    height: 4px;
+    height: 2px;
     right: 0;
     background-image: linear-gradient(90deg, #3e53a4 0%, #cf0989 100%);
 }
@@ -133,7 +133,7 @@ a.magenta-btn {
     margin-top: 50px;
 }
 
-section#quickStartGuide, section#profiles, section#innovationThemes, section#pbApis {
+section#quickStartGuide, section#profiles, section#innovationThemes, section#pbApis,section#startUpKit {
     padding: 50px 0;
 }
 
@@ -331,4 +331,93 @@ section#downloadCatlog .btnWrapper {
 section#downloadCatlog h2 {
     margin: 0;
     color: #e1e1e1;
+}
+.kit-card .icon{
+    width: 40px;
+    height: 40px;
+}
+.kit-card .icon img{
+    width: 100%;
+    height: 100%;
+}
+.kit-card h4{
+    color: #3e53a4;
+}
+.kit-card li {
+    color: #3e53a4;
+}
+.kit-card li p{
+    color:#717171;
+}
+.kit-card{
+    background: #fff;
+    box-shadow: 0 0 2px grey;
+    padding: 10px;
+}
+span.bold{
+    font-weight: bold;
+    color: black;
+}
+.kit-card.outer{
+    padding: 20px;
+}
+.kit-card.inner {
+    box-shadow: 0px 2px 6px #c0c0c0;
+}
+.kit-card.inner>p{
+    padding-left: 20px;
+    margin-top: 20px;
+}
+.kit-card.inner{
+    height: 410px;
+}
+.kit-card.claim{
+    height: 535.78px;
+}
+section#startUpKit{
+    position: relative;
+    padding-bottom: 150px;
+}
+section#startUpKit .backgroundImg {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 180px;
+}
+section#startUpKit .backgroundImg img{
+    width: 100%;
+}
+#pbRecoveryLib .heading{
+    padding: 30px;
+    background: black;
+}
+#pbRecoveryLib .heading .icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+#pbRecoveryLib .heading .icon img{
+    width: 100%;
+}
+#pbRecoveryLib .heading h2{
+    margin: 0;
+}
+#pbRecoveryLib .webinar{
+    padding-bottom: 30px;
+}
+#pbRecoveryLib .webinar label{
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+#pbRecoveryLib .container-fluid{
+    box-shadow: 2px 2px 2px #c0c0c0;
+}
+#pbRecoveryLib {
+    padding-bottom: 50px;
+}
+section.toolkitSection a{
+    text-decoration: none;
+    color: #717171;
 }
