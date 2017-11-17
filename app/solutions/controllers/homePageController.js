@@ -60,4 +60,12 @@ var homePageController = startupSmb.controller('homePageController', ['$scope', 
 			}
 	]
 
+
+
+	$(document).ready(function () {
+
+        $(".single-item").slick();
+
+    });
+
 }]);

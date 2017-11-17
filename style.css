@@ -421,3 +421,20 @@ section.toolkitSection a{
     text-decoration: none;
     color: #717171;
 }
+.carousalContainer iframe{
+    width: 100%;
+    outline: none !important;
+}
+.carousalContainer iframe:focus{
+    outline: none !important;
+}
+.slick-slide{
+    outline: none !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .api-card{
+        height: auto;
+        margin-bottom: 15px;
+    }
+}
