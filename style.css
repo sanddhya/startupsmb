@@ -7,6 +7,9 @@ header {
 header .backgroundImg {
     z-index: -1;
 }
+header .overlay .headings h3{
+    margin-top: 10px;
+}
 
 header .header-title {
     position: absolute;
@@ -430,6 +433,10 @@ section.toolkitSection a{
 }
 .slick-slide{
     outline: none !important;
+}
+#downloadCatlog h4{
+    margin: 0;
+    color: #e1e1e1;
 }
 
 @media only screen and (max-width: 991px) {
