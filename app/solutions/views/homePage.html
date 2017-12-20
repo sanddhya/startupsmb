@@ -5,18 +5,13 @@
         </div>
         <div class="overlay">
             <div class="headings">
-                <div class="displayFlex flex-center">
-                    <div class="pb-logo">
-                        <img src="images/logos/pb_logo.png" alt="">
-                    </div>
-
-                </div>
+                
                 <div class="displayFlex flex-center">
                     <h1 style="font-size: 55px;" class="pb-underline">SMB Startup Pack</h1>
                 </div>
                 
                 <h3>A resource to help developers get started to create apps and solutions for Pitney Bowes C-series devices.</h3>
-                <h3>Use Pitney Bowes APIs and explore the business opportunities with Small and Medium Business(SMB) Customers.</h3>
+                <h3>Use Pitney Bowes APIs and explore the business opportunities with Small and Medium Business (SMB) Customers.</h3>
                 <div class="catlogBtn">
                     <a href="vendor/PB Startup Kit Catalog.pdf" class="magenta-btn" download>Download PB Startup Catalog</a>
                 </div>
@@ -415,7 +410,7 @@
     <div class="container">
         <div class="displayFlex flex-center">
             <h2 class="pb-underline magenta-text">
-                Explore the Unique value which Pitney Bowes APIs bring to your apps and solution
+                Explore the Unique value which Pitney Bowes APIs bring to your apps and solutions
             </h2>
         </div>
         <div class="displayFlex flex-center">
@@ -1201,7 +1196,7 @@
 
     </div>
 </div>
-    <div class="viewSMBBtn displayFlex flex-center"><a href="http://pbsmbapps.com" target="_blank" class="magenta-btn"  >View PB SMB AppStore Beta</a></div>
+    <div class="viewSMBBtn displayFlex flex-center"><a href="http://pbsmbapps.com" target="_blank" class="magenta-btn"  >View PB SMB AppStore <span style="font-weight: bold">(Beta)</span></a></div>
 
 </section>
 
@@ -1392,3 +1387,86 @@
         </div>
     </div>
 </footer> -->
+
+
+<script type="text/ng-template" id="signupModal.html">
+    
+    <div class="modal-header">
+        <h3 class="modal-title pb-underline magenta-text" id="modal-title">Welcome to SMB Startup Pack</h3>
+    </div>
+    <div class="modal-body">
+
+        <form name="signupForm" autocomplete="off" ng-submit="signupForm.$valid && signUp()" accessible-form novalidate>
+
+            <div class="form-group spacer-top-sm">
+                <label for="email">
+                    Email
+                </label>
+                <div class="form-group" style="position: relative">
+                    <input class="form-control" name="email" type="text" ng-model="signUpDetails.username"
+                           ng-blur="checkIfUserExist()"
+                           ng-pattern="emailRegEx" ng-keydown="submit=false;error='';info=''" required/>
+                    <i class="nc-icon-mini loader_circle-04 spin btnLoader ng-hide"
+                       aria-hidden="true" style="position: absolute;top: 13px;right: 0px;"
+                       ng-show="requestLoading"></i>
+
+                    <div ng-messages="signupForm.email.$error" ng-show="submit">
+                        <span ng-message="required" class="error-msg">Email is required.</span>
+                        <span ng-message="pattern" class="error-msg">Enter valid E-mail.</span>
+                    </div>
+                    <div ng-show="userExistMsg">
+                        <span class="error-msg">{{userExistMsg}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group spacer-bottom-sm password-reveal">
+                <label for="password">
+                    Password
+                </label>
+                <input class="form-control" name="pw" type="password" ng-model="signUpDetails.password"
+                       ng-pattern="passwordRegEx" ng-init="signin.focus = false" ng-maxlength="25"
+                       ng-focus="signin.focus = true" ng-blur="signin.focus = false"
+                       ng-keydown="submit=false;error='';info=''"
+                       required/>
+                <div ng-messages="signupForm.pw.$error" ng-show="submit">
+                    <span ng-message="required" class="error-msg">Password is required.</span>
+                    <span ng-message="pattern" class="error-msg">Enter valid password</span>
+                </div>
+                <span class="error-msg"
+                      ng-show="signupForm.pw.$error.maxlength">Password length should not be greater than 25 characters.</span>
+            </div>
+
+            <div class="form-group spacer-bottom-sm password-reveal">
+                <label for="confirmpw">
+                    <span translate="CONFIRM_PASSWORD_LABEL"></span>
+                    Confirm password
+                </label>
+                <input class="form-control" name="confoirmpw" type="password"
+                       ng-model="signUpDetails.confirmPassword" ng-maxlength="25"
+                       ng-keydown="submit=false;error='';info=''" password-verify="{{signUpDetails.password}}"
+                       required/>
+                <div ng-messages="signupForm.confoirmpw.$error" ng-show="submit">
+                    <span ng-message="required" class="error-msg">Confirm password is required.</span>
+                    <span ng-message="passwordVerify" class="error-msg">Confirm password doesnt match with password.</span>
+                </div>
+                <span class="error-msg"
+                      ng-show="signupForm.confoirmpw.$error.maxlength">Password length should not be greater than 25 characters.</span>
+            </div>
+
+            <button class="btn btn-primary btn-block btn-lg" type="submit"
+                    ng-click="submit=true;info='';error='';">
+                <i class="nc-icon-mini loader_circle-04 spin btnLoader" aria-hidden="true"
+                   ng-show="signupLoader"></i>
+                Sign Up
+            </button>
+        </form>
+        <hr>
+        <p class="text-center">
+            <span>Alrerady registered? </span>
+            <a ui-sref="login">
+                <span>Sign In</span>
+            </a>
+        </p>
+    </div>
+</script>

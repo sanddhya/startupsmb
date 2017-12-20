@@ -1,5 +1,30 @@
-var homePageController = startupSmb.controller('homePageController', ['$scope', function ($scope) {
+var homePageController = startupSmb.controller('homePageController', ['$scope','$uibModal','$timeout', function ($scope,$uibModal,$timeout) {
     
+	$timeout(function(){
+		$uibModal.open({
+        templateUrl: 'signupModal.html',
+        controller: ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+        	$scope.emailRegEx = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]{0,4}$/;
+        	$scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
+        	
+        	$scope.signUp = function(){
+        		alert("signed up");
+        	}
+            $scope.close = function () {
+                $uibModalInstance.close();
+            }
+        }],
+        backdrop: 'static',
+        windowClass: "signupModal",
+         keyboard : false
+       
+    }).result.then(function (data) {
+
+    });
+},500)
+	
+
+
 	$scope.profiles = [
 			{
 				"name":"Small Business Owner in Retail and Online",

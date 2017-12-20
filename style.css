@@ -7,11 +7,9 @@ header {
     width: 100%;
     height: auto;
 }
-.headings .pb-logo{
-    width: 300px;
-}
+
 .header-title .pb-logo{
-    width: 160px;
+    width: 200px;
 }
 header .backgroundImg {
     z-index: -1;
@@ -447,7 +445,28 @@ section.toolkitSection a{
     margin: 0;
     color: #e1e1e1;
 }
+.signupModal .modal-content{
+    width: 500px;
+    margin: 0 auto;
+}
 
+.signupModal .modal-title{
+    display: inline-block;
+}
+
+.form-group.password-reveal{
+    position: relative;
+}
+.form-group.password-reveal a.showHideText{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    top: 30px;
+}
+.error-msg{
+    margin-top: 2px;
+    color: #d30c0c;
+}
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
