@@ -3,7 +3,16 @@ header {
     position: relative !important;
     color: #fff;
 }
-
+.pb-logo img{
+    width: 100%;
+    height: auto;
+}
+.headings .pb-logo{
+    width: 300px;
+}
+.header-title .pb-logo{
+    width: 160px;
+}
 header .backgroundImg {
     z-index: -1;
 }
