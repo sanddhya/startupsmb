@@ -14,8 +14,11 @@
     "angular-ui-router": "^0.4.3"
   },
   "dependencies": {
+    "angular-cookies": "^1.6.7",
+    "angular-md5": "^0.1.10",
     "angular-messages": "^1.6.7",
     "angular-ui-bootstrap": "^2.5.6",
+    "md5": "^2.2.1",
     "pb-design-system": "^3.2.1"
   }
 }
