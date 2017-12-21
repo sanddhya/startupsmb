@@ -26,19 +26,14 @@ var homePageController = startupSmb.controller('homePageController',
                                     $scope.signUpDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    $timeout(function () {
-                                        $scope.error = '';
-                                        $scope.info = '';
-                                    }, 1000);
                                 }, function (error) {
-                                    $scope.error = error.data.message || 'Something went wrong.'
-                                    $scope.signUpDetails = {};
+                                    if (error.data.status == 409) {
+                                        $scope.error = "User already exist.Try with another email Id "
+                                    } else {
+                                        $scope.error = 'Something went wrong.'
+                                    }
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    $timeout(function () {
-                                        $scope.error = '';
-                                        $scope.info = '';
-                                    }, 1000)
                                 })
                             };
 
@@ -55,19 +50,14 @@ var homePageController = startupSmb.controller('homePageController',
                                     $scope.signInDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    $timeout(function () {
-                                        $scope.error = '';
-                                        $scope.info = '';
-                                    }, 1000)
                                 }, function (error) {
-                                    $scope.error = error.data.message || 'Something went wrong.'
-                                    $scope.signInDetails = {};
+                                    if (error.data.status == 401) {
+                                        $scope.error = 'Incorrect password';
+                                    } else {
+                                        $scope.error = 'Something went wrong.'
+                                    }
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    $timeout(function () {
-                                        $scope.error = '';
-                                        $scope.info = '';
-                                    }, 1000)
                                 })
                             };
 
@@ -75,6 +65,8 @@ var homePageController = startupSmb.controller('homePageController',
                                 $scope.signInDetails = {};
                                 $scope.signUpDetails = {};
                                 $scope.loginState = state;
+                                $scope.error = "";
+                                $scope.info = "";
                             }
                             $scope.close = function () {
                                 $uibModalInstance.close();
