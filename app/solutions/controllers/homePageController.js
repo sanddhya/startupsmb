@@ -6,8 +6,8 @@ var homePageController = startupSmb.controller('homePageController',
             if (!$cookies.get('loggedIn')) {
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
-                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies',
-                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies) {
+                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout',
+                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies, $timeout) {
                             $scope.emailRegEx = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]{0,4}$/;
                             $scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
 
@@ -26,19 +26,19 @@ var homePageController = startupSmb.controller('homePageController',
                                     $scope.signUpDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    setTimeout(function () {
+                                    $timeout(function () {
                                         $scope.error = '';
                                         $scope.info = '';
-                                    }, 500)
+                                    }, 1000);
                                 }, function (error) {
                                     $scope.error = error.data.message || 'Something went wrong.'
                                     $scope.signUpDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    setTimeout(function () {
+                                    $timeout(function () {
                                         $scope.error = '';
                                         $scope.info = '';
-                                    }, 500)
+                                    }, 1000)
                                 })
                             };
 
@@ -55,19 +55,19 @@ var homePageController = startupSmb.controller('homePageController',
                                     $scope.signInDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    setTimeout(function () {
+                                    $timeout(function () {
                                         $scope.error = '';
                                         $scope.info = '';
-                                    }, 500)
+                                    }, 1000)
                                 }, function (error) {
                                     $scope.error = error.data.message || 'Something went wrong.'
                                     $scope.signInDetails = {};
                                     $scope.submit = false;
                                     $scope.signupLoader = false;
-                                    setTimeout(function () {
+                                    $timeout(function () {
                                         $scope.error = '';
                                         $scope.info = '';
-                                    }, 500)
+                                    }, 1000)
                                 })
                             };
 
