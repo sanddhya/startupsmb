@@ -7,8 +7,17 @@ var homePageController = startupSmb.controller('homePageController', ['$scope','
         	$scope.emailRegEx = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]{0,4}$/;
         	$scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
         	
+        	$scope.loginState = 'signup';
         	$scope.signUp = function(){
         		alert("signed up");
+        	}
+        	$scope.signIn = function(){
+        		alert("signed In");
+        	}
+        	$scope.toggleLogin = function(state){
+        		$scope.signInDetails = {};
+        		$scope.signUpDetails = {};
+        		$scope.loginState = state;
         	}
             $scope.close = function () {
                 $uibModalInstance.close();

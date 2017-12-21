@@ -467,6 +467,11 @@ section.toolkitSection a{
     margin-top: 2px;
     color: #d30c0c;
 }
+.forgotPass{
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+}
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
