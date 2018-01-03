@@ -34,20 +34,23 @@ var homePageController = startupSmb.controller('homePageController',
                 });
             };
 
-            /*   gapi.load('auth2', function () {//load in the auth2 api's, without it gapi.auth2 will be undefined
-                   gapi.auth2.init(
-                       {
-                           client_id: 'CLIENT_ID.apps.googleusercontent.com'
-                       }
-                   );
-                   var GoogleAuth = gapi.auth2.getAuthInstance();//get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
-                   $scope.onLogInButtonClick = function () {
-                       //add a function to the controller so ng-click can bind to it
-                       GoogleAuth.signIn().then(function (response) {//request to sign in
-                           console.log(response);
-                       });
-                   };
-               });*/
+            gapi.load('auth2', function () {//load in the auth2 api's, without it gapi.auth2 will be undefined
+                gapi.auth2.init(
+                    {
+                        client_id: ' 454365355426-pbv3s7e3vtogppgfkavva2kbcasl6d26.apps.googleusercontent.com'
+                    }
+                );
+                //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
+                var GoogleAuth = gapi.auth2.getAuthInstance();
+                $scope.continueWithGoogle = function () {
+                    //add a function to the controller so ng-click can bind to it
+                    GoogleAuth.signIn().then(function (response) {//request to sign in
+                        console.log(response);
+                        //saveUserData()
+                        // $ui
+                    });ø
+                };
+            });
 
             $scope.openRegisterModal = function () {
                 $uibModal.open({
@@ -203,7 +206,7 @@ var homePageController = startupSmb.controller('homePageController',
                       document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
                   });*/
             }
-            
+
             $scope.profiles = [
                 {
                     "name": "Small Business Owner in Retail and Online",
