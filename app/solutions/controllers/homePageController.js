@@ -1,7 +1,6 @@
 var homePageController = startupSmb.controller('homePageController',
-    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies',
-        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies) {
-
+    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies','$rootScope',
+        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies,$rootScope) {
             $scope.openRegisterModal = function(){
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
@@ -83,7 +82,7 @@ var homePageController = startupSmb.controller('homePageController',
             if (!$cookies.get('loggedIn')) {
                 $scope.openRegisterModal();
             }
-            
+
             $scope.profiles = [
                 {
                     "name": "Small Business Owner in Retail and Online",
