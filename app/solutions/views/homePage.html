@@ -1435,7 +1435,7 @@
                 <div class="form-group" style="position: relative">
                     <input class="form-control" name="username" type="text" ng-model="signUpDetails.username"
                            ng-pattern="" ng-keydown="submit=false;error='';info=''" required/>
-                    <div ng-messages="signupForm.name.$error" ng-show="submit">
+                    <div ng-messages="signupForm.username.$error" ng-show="submit">
                         <span ng-message="required" class="error-msg">Name is required.</span>
                         <span ng-message="pattern" class="error-msg">Enter valid name.</span>
                     </div>
@@ -1503,29 +1503,26 @@
                    ng-show="signupLoader"></i>
                 Continue
             </button>
-
-            <div class="text-center">
-                <label for="" style="margin: 20px;">OR</label>
-            </div>
-
-            <div class="row socialBtns">
-                <div class="col-md-12">
-                    <button class="btn btn-primary btn-block facebookBtn" ng-click="continueWithFb()"
-                    >
-                        <i class="nc-icon-mini social_logo-fb-simple" aria-hidden="true"
-                        ></i>
-                        Continue with Facebook
-                    </button>
-                </div>
-                <div class="col-md-12">
-                    <button class="btn btn-primary btn-block googleBtn" ng-click="continueWithGoogle()">
-                        <i class="nc-icon-mini social_logo-google-plus" aria-hidden="true" 
-                        ></i>
-                        Continue with Google &nbsp&nbsp&nbsp
-                    </button>
-                </div>
-            </div>
         </form>
+        <div class="text-center">
+            <label for="" style="margin: 20px;">OR</label>
+        </div>
+
+        <div class="row socialBtns">
+            <div class="col-md-12">
+                <button class="btn btn-primary btn-block facebookBtn" ng-click="continueWithFb()">
+                    <i class="nc-icon-mini social_logo-fb-simple" aria-hidden="true"
+                    ></i>
+                    Continue with Facebook
+                </button>
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-primary btn-block googleBtn" ng-click="continueWithGoogle()">
+                    <i class="nc-icon-mini social_logo-google-plus" aria-hidden="true"></i>
+                    Continue with Google &nbsp&nbsp&nbsp
+                </button>
+            </div>
+        </div>
         <!-- Sign in form -->
         <form name="signinForm" autocomplete="false" ng-submit="signinForm.$valid && signIn()" accessible-form
               novalidate ng-show="loginState=='signin'">

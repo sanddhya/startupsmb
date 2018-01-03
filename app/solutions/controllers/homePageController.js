@@ -3,6 +3,7 @@ var homePageController = startupSmb.controller('homePageController',
         function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval) {
 
             $scope.userLoggedIn = false;
+            $scope.GoogleAuth;
             $interval(function () {
                 if (!$scope.userLoggedIn && $('.signupModal').length == 0) {
                     $scope.openRegisterModal();
@@ -41,22 +42,14 @@ var homePageController = startupSmb.controller('homePageController',
                     }
                 );
                 //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
-                var GoogleAuth = gapi.auth2.getAuthInstance();
-                $scope.continueWithGoogle = function () {
-                    //add a function to the controller so ng-click can bind to it
-                    GoogleAuth.signIn().then(function (response) {//request to sign in
-                        console.log(response);
-                        //saveUserData()
-                        // $ui
-                    });ø
-                };
+                GoogleAuth = gapi.auth2.getAuthInstance();
             });
 
             $scope.openRegisterModal = function () {
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
-                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout',
-                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies, $timeout) {
+                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout', 'GoogleAuth',
+                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies, $timeout, GoogleAuth) {
                             $scope.emailRegEx = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]{0,4}$/;
                             $scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
 
@@ -73,6 +66,15 @@ var homePageController = startupSmb.controller('homePageController',
                                 $scope.signUpDetails = {};
                                 $scope.userLoggedIn = true;
                                 $uibModalInstance.close();
+                            };
+
+                            $scope.continueWithGoogle = function () {
+                                //add a function to the controller so ng-click can bind to it
+                                GoogleAuth.signIn().then(function (response) {//request to sign in
+                                    console.log(response);
+                                    //saveUserData()
+                                    // $ui
+                                });
                             };
 
                             /*  $scope.signUp = function () {
@@ -150,6 +152,11 @@ var homePageController = startupSmb.controller('homePageController',
                         }],
                     backdrop: 'static',
                     windowClass: "signupModal",
+                    resolve: {
+                        GoogleAuth: function () {
+                            return $scope.GoogleAuth
+                        }
+                    },
                     keyboard: false,
                     animation: true
 
