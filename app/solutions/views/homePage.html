@@ -1428,6 +1428,21 @@
             <div ng-show="info" class="alert alert-success alert-flex spacer-top-sm">
                 <div>{{info}}</div>
             </div>
+            
+            <div class="form-group spacer-top-sm">
+                <label for="name">
+                    Name
+                </label>
+                <div class="form-group" style="position: relative">
+                    <input class="form-control" name="name" type="text" ng-model="signUpDetails.name"
+                           ng-pattern="" ng-keydown="submit=false;error='';info=''" required/>
+                    <div ng-messages="signupForm.name.$error" ng-show="submit">
+                        <span ng-message="required" class="error-msg">Name is required.</span>
+                        <span ng-message="pattern" class="error-msg">Enter valid name.</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group spacer-top-sm">
                 <label for="email">
                     Email
