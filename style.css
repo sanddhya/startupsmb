@@ -472,6 +472,22 @@ section.toolkitSection a{
     text-align: center;
     margin-bottom: 15px;
 }
+
+.facebookBtn{
+    background: #3C66C4 !important;
+    border-color: #3C66C4 !important;
+}
+.googleBtn{
+    background: #CF4332 !important;
+    border-color: #CF4332 !important;
+}
+.socialBtns button i{
+    margin-right: 5px;
+}
+.socialBtns button{
+    margin: 5px 0;
+}
+
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
