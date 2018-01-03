@@ -72,7 +72,8 @@ var homePageController = startupSmb.controller('homePageController',
                         }],
                     backdrop: 'static',
                     windowClass: "signupModal",
-                    keyboard: false
+                    keyboard: false,
+                    animation:true
 
                 }).result.then(function (data) {
 
