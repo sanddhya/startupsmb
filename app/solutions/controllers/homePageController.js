@@ -81,9 +81,9 @@ var homePageController = startupSmb.controller('homePageController',
             }
 
             if (!$cookies.get('loggedIn')) {
-                $timeout(function(){
+                
                     $scope.openRegisterModal();
-                },5000);
+                
                 
             }
 
