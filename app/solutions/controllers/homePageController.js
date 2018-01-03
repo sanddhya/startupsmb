@@ -194,12 +194,6 @@ var homePageController = startupSmb.controller('homePageController',
                 });
             }
 
-            /*    if (!$cookies.get('loggedIn')) {
-                    $timeout(function () {
-                        $scope.openRegisterModal();
-                    }, 5000);
-                }*/
-
             // Logout from facebook
             function fbLogout() {
                 /*  FB.logout(function () {
@@ -209,7 +203,7 @@ var homePageController = startupSmb.controller('homePageController',
                       document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
                   });*/
             }
-
+            
             $scope.profiles = [
                 {
                     "name": "Small Business Owner in Retail and Online",
