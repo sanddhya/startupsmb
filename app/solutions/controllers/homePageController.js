@@ -1,7 +1,55 @@
 var homePageController = startupSmb.controller('homePageController',
-    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies','$rootScope',
-        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies,$rootScope) {
-            $scope.openRegisterModal = function(){
+    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval',
+        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval) {
+
+            $scope.userLoggedIn = false;
+            $interval(function () {
+                if (!$scope.userLoggedIn && $('.signupModal').length == 0) {
+                    $scope.openRegisterModal();
+                }
+            }, 600000);
+
+            window.fbAsyncInit = function () {
+                // FB JavaScript SDK configuration and setup
+                FB.init({
+                    appId: '259601401238503', // FB App ID
+                    cookie: true,  // enable cookies to allow the server to access the session
+                    xfbml: true,  // parse social plugins on this page
+                    version: 'v2.8' // use graph api version 2.8
+                });
+
+                // Check whether the user already logged in
+                FB.getLoginStatus(function (response) {
+                    $timeout(function () {
+                        $rootScope.loader = false;
+                    });
+                    if (response.status === 'connected') {
+                        //getFbUserData();
+                        $scope.userLoggedIn = true;
+                    } else if ($cookies.get('loggedIn')) {
+                        $scope.userLoggedIn = true;
+                    } else {
+                        $scope.openRegisterModal();
+                    }
+                });
+            };
+
+            /*   gapi.load('auth2', function () {//load in the auth2 api's, without it gapi.auth2 will be undefined
+                   gapi.auth2.init(
+                       {
+                           client_id: 'CLIENT_ID.apps.googleusercontent.com'
+                       }
+                   );
+                   var GoogleAuth = gapi.auth2.getAuthInstance();//get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
+                   $scope.onLogInButtonClick = function () {
+                       //add a function to the controller so ng-click can bind to it
+                       GoogleAuth.signIn().then(function (response) {//request to sign in
+                           console.log(response);
+                       });
+                   };
+               });*/
+
+            $scope.openRegisterModal = function () {
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
                     controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout',
@@ -10,53 +58,79 @@ var homePageController = startupSmb.controller('homePageController',
                             $scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
 
                             $scope.loginState = 'signup';
+
+
                             $scope.signUp = function () {
-                                var data = angular.extend({}, $scope.signUpDetails);
-                                data.password = md5.createHash(data.password);
-                                $scope.signupLoader = true;
-                                serviceForApiCall.signUp(data).then(function (response) {
-                                    var expireDate = new Date();
-                                    //after 5 hrs automatically signout
-                                    expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
-                                    $cookies.put('loggedIn', true, {'expires': expireDate});
-                                    $scope.info = response.data.message;
-                                    $uibModalInstance.close();
-                                    $scope.signUpDetails = {};
-                                    $scope.submit = false;
-                                    $scope.signupLoader = false;
-                                }, function (error) {
-                                    if (error.data.status == 409) {
-                                        $scope.error = "User already exist.Try with another email Id "
-                                    } else {
-                                        $scope.error = 'Something went wrong.'
-                                    }
-                                    $scope.submit = false;
-                                    $scope.signupLoader = false;
-                                })
+                                var data = angular.extend({"source": "self"}, $scope.signUpDetails);
+                                saveUserData(data);
+                                var expireDate = new Date();
+                                //after 5 hrs automatically signout
+                                expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
+                                $cookies.put('loggedIn', true, {'expires': expireDate});
+                                $scope.signUpDetails = {};
+                                $scope.userLoggedIn = true;
+                                $uibModalInstance.close();
                             };
 
-                            $scope.signIn = function () {
-                                var data = angular.extend({}, $scope.signInDetails);
-                                data.password = md5.createHash(data.password);
-                                $scope.signupLoader = true;
-                                serviceForApiCall.login(data).then(function (response) {
-                                    var expireDate = new Date();
-                                    //after 5 hrs automatically signout
-                                    expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
-                                    $cookies.put('loggedIn', true, {'expires': expireDate});
-                                    $uibModalInstance.close();
-                                    $scope.signInDetails = {};
-                                    $scope.submit = false;
-                                    $scope.signupLoader = false;
-                                }, function (error) {
-                                    if (error.data.status == 401) {
-                                        $scope.error = 'Incorrect password';
+                            /*  $scope.signUp = function () {
+                                  var data = angular.extend({}, $scope.signUpDetails);
+                                  data.password = md5.createHash(data.password);
+                                  $scope.signupLoader = true;
+                                  serviceForApiCall.signUp(data).then(function (response) {
+                                      var expireDate = new Date();
+                                      //after 5 hrs automatically signout
+                                      expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
+                                      $cookies.put('loggedIn', true, {'expires': expireDate});
+                                      $scope.info = response.data.message;
+                                      $uibModalInstance.close();
+                                      $scope.signUpDetails = {};
+                                      $scope.submit = false;
+                                      $scope.signupLoader = false;
+                                  }, function (error) {
+                                      if (error.data.status == 409) {
+                                          $scope.error = "User already exist.Try with another email Id "
+                                      } else {
+                                          $scope.error = 'Something went wrong.'
+                                      }
+                                      $scope.submit = false;
+                                      $scope.signupLoader = false;
+                                  })
+                              };
+
+                              $scope.signIn = function () {
+                                  var data = angular.extend({}, $scope.signInDetails);
+                                  data.password = md5.createHash(data.password);
+                                  $scope.signupLoader = true;
+                                  serviceForApiCall.login(data).then(function (response) {
+                                      var expireDate = new Date();
+                                      //after 5 hrs automatically signout
+                                      expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
+                                      $cookies.put('loggedIn', true, {'expires': expireDate});
+                                      $uibModalInstance.close();
+                                      $scope.signInDetails = {};
+                                      $scope.submit = false;
+                                      $scope.signupLoader = false;
+                                  }, function (error) {
+                                      if (error.data.status == 401) {
+                                          $scope.error = 'Incorrect password';
+                                      } else {
+                                          $scope.error = 'Something went wrong.'
+                                      }
+                                      $scope.submit = false;
+                                      $scope.signupLoader = false;
+                                  })
+                              };*/
+
+                            $scope.continueWithFb = function () {
+                                FB.login(function (response) {
+                                    if (response.authResponse) {
+                                        // Get and display the user profile data
+                                        getFbUserData();
+                                        $uibModalInstance.close();
                                     } else {
-                                        $scope.error = 'Something went wrong.'
+                                        console.log('User cancelled login or did not fully authorize.');
                                     }
-                                    $scope.submit = false;
-                                    $scope.signupLoader = false;
-                                })
+                                }, {scope: 'email'});
                             };
 
                             $scope.toggleLogin = function (state) {
@@ -66,6 +140,7 @@ var homePageController = startupSmb.controller('homePageController',
                                 $scope.error = "";
                                 $scope.info = "";
                             }
+
                             $scope.close = function () {
                                 $uibModalInstance.close();
                             }
@@ -73,18 +148,66 @@ var homePageController = startupSmb.controller('homePageController',
                     backdrop: 'static',
                     windowClass: "signupModal",
                     keyboard: false,
-                    animation:true
+                    animation: true
 
                 }).result.then(function (data) {
+                });
+            };
 
+            // Load the JavaScript SDK asynchronously
+            (function (d, s, id) {
+                $rootScope.loader = true;
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            // Fetch the user profile data from facebook
+            function getFbUserData() {
+                FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email,link,gender,locale,picture'},
+                    function (response) {
+                        console.log(response);
+                        var userData = {
+                            "email": response.email,
+                            "username": response.first_name + ' ' + response.last_name,
+                            "source": "FB"
+                        };
+                        $rootScope.loader = false;
+                        saveUserData(userData);
+                    });
+            }
+
+            //send data to backend
+            function saveUserData(data) {
+                $.post({
+                    url: "http://smbstartuppack-dot-datatest-148118.appspot.com/smb/registeruser",
+                    method: 'POST',
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (res) {
+                        console.log(res);
+                        $scope.signUpDetails = {};
+                    }
                 });
             }
 
-            if (!$cookies.get('loggedIn')) {
-                $timeout(function(){
-                    $scope.openRegisterModal();
-                },5000);
-                
+            /*    if (!$cookies.get('loggedIn')) {
+                    $timeout(function () {
+                        $scope.openRegisterModal();
+                    }, 5000);
+                }*/
+
+            // Logout from facebook
+            function fbLogout() {
+                /*  FB.logout(function () {
+                      document.getElementById('fbLink').setAttribute("onclick", "fbLogin()");
+                      document.getElementById('fbLink').innerHTML = '<img src="fblogin.png"/>';
+                      document.getElementById('userData').innerHTML = '';
+                      document.getElementById('status').innerHTML = 'You have successfully logout from Facebook.';
+                  });*/
             }
 
             $scope.profiles = [
@@ -145,7 +268,7 @@ var homePageController = startupSmb.controller('homePageController',
                         "Local service businesses: laundry, groceries & home services"
                     ]
                 }
-            ]
+            ];
 
 
             $(document).ready(function () {
@@ -165,7 +288,7 @@ var homePageController = startupSmb.controller('homePageController',
                     slidesToScroll: 5
 
                 });
-
             });
 
-        }]);
+        }
+    ]);
