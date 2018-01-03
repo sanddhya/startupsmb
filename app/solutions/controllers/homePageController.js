@@ -2,8 +2,7 @@ var homePageController = startupSmb.controller('homePageController',
     ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies',
         function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies) {
 
-
-            if (!$cookies.get('loggedIn')) {
+            $scope.openRegisterModal = function(){
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
                     controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout',
@@ -81,6 +80,10 @@ var homePageController = startupSmb.controller('homePageController',
                 });
             }
 
+            if (!$cookies.get('loggedIn')) {
+                $scope.openRegisterModal();
+            }
+            
             $scope.profiles = [
                 {
                     "name": "Small Business Owner in Retail and Online",

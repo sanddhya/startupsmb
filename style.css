@@ -487,6 +487,14 @@ section.toolkitSection a{
 .socialBtns button{
     margin: 5px 0;
 }
+.register{
+    padding: 20px 0;
+}
+.register a{
+    color: #c0c0c0;
+    text-decoration: none;
+    font-size: 15px;
+}
 
 @media only screen and (max-width: 991px) {
     .api-card{
