@@ -92,7 +92,9 @@ var homePageController = startupSmb.controller('homePageController',
                                 expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
                                 $cookies.put('loggedIn', true, {'expires': expireDate});
                                 $scope.signUpDetails = {};
-                                $scope.userLoggedIn = true;
+                                $timeout(function () {
+                                    $scope.userLoggedIn = true;
+                                });
                                 $uibModalInstance.close();
                             };
 
@@ -104,6 +106,7 @@ var homePageController = startupSmb.controller('homePageController',
                                         email: response.w3.ofa + ' ' + response.w3.wea,
                                         source: "google"
                                     };
+                                    $scope.userLoggedIn = true;
                                     saveUserData(data);
                                     $uibModalInstance.close();
                                 });
