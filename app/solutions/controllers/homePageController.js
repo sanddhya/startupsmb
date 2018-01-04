@@ -2,14 +2,58 @@ var homePageController = startupSmb.controller('homePageController',
     ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval',
         function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval) {
 
+
             $scope.userLoggedIn = false;
-            $scope.GoogleAuth;
-            $interval(function () {
+            $rootScope.loader = true;
+
+
+            $timeout(function () {
+                $rootScope.loader = false;
                 if (!$scope.userLoggedIn && $('.signupModal').length == 0) {
                     $scope.openRegisterModal();
                 }
+            }, 10000);
+
+            //if user went without register show popup every after 10 min
+            var showModal = $interval(function () {
+                if (!$scope.userLoggedIn && $('.signupModal').length == 0) {
+                    $scope.openRegisterModal();
+                } else {
+                    $interval.cancel(showModal);
+                }
             }, 600000);
 
+            //google
+            var gInit = $interval(function () {
+                if (gapi) {
+                    gapi.load('auth2', function () {//load in the auth2 api's, without it gapi.auth2 will be undefined
+                        gapi.auth2.init(
+                            {
+                                client_id: '454365355426-pbv3s7e3vtogppgfkavva2kbcasl6d26.apps.googleusercontent.com'
+                            }
+                        );
+                        //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
+                        $rootScope.GoogleAuth = gapi.auth2.getAuthInstance();
+                        $rootScope.GoogleAuth.currentUser.listen(function (currentUser) {
+                                if (currentUser.w3) {
+                                    if (currentUser) {
+                                        var data = {
+                                            username: currentUser.w3.U3,
+                                            email: currentUser.w3.ofa + ' ' + currentUser.w3.wea,
+                                            source: "google"
+                                        };
+                                        saveUserData(data);
+                                        $scope.userLoggedIn = true;
+                                    }
+                                }
+                            }
+                        );
+                        $interval.cancel(gInit);
+                    });
+                }
+            }, 1000);
+
+            //FB code
             window.fbAsyncInit = function () {
                 // FB JavaScript SDK configuration and setup
                 FB.init({
@@ -21,40 +65,24 @@ var homePageController = startupSmb.controller('homePageController',
 
                 // Check whether the user already logged in
                 FB.getLoginStatus(function (response) {
-                    $timeout(function () {
-                        $rootScope.loader = false;
-                    });
                     if (response.status === 'connected') {
-                        //getFbUserData();
+                        getFbUserData();
                         $scope.userLoggedIn = true;
                     } else if ($cookies.get('loggedIn')) {
                         $scope.userLoggedIn = true;
-                    } else {
-                        $scope.openRegisterModal();
                     }
                 });
             };
 
-            gapi.load('auth2', function () {//load in the auth2 api's, without it gapi.auth2 will be undefined
-                gapi.auth2.init(
-                    {
-                        client_id: ' 454365355426-pbv3s7e3vtogppgfkavva2kbcasl6d26.apps.googleusercontent.com'
-                    }
-                );
-                //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
-                GoogleAuth = gapi.auth2.getAuthInstance();
-            });
-
             $scope.openRegisterModal = function () {
                 $uibModal.open({
                     templateUrl: 'signupModal.html',
-                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout', 'GoogleAuth',
-                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies, $timeout, GoogleAuth) {
+                    controller: ['$scope', '$uibModalInstance', 'serviceForApiCall', 'md5', '$cookies', '$timeout',
+                        function ($scope, $uibModalInstance, serviceForApiCall, md5, $cookies, $timeout) {
                             $scope.emailRegEx = /^[a-z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)?@[a-z][a-zA-Z-0-9]*\.[a-z]{0,4}$/;
                             $scope.passwordRegEx = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\^&\\*])(?=.{8,})");
 
                             $scope.loginState = 'signup';
-
 
                             $scope.signUp = function () {
                                 var data = angular.extend({"source": "self"}, $scope.signUpDetails);
@@ -70,10 +98,14 @@ var homePageController = startupSmb.controller('homePageController',
 
                             $scope.continueWithGoogle = function () {
                                 //add a function to the controller so ng-click can bind to it
-                                GoogleAuth.signIn().then(function (response) {//request to sign in
-                                    console.log(response);
-                                    //saveUserData()
-                                    // $ui
+                                $rootScope.GoogleAuth.signIn().then(function (response) {//request to sign in
+                                    var data = {
+                                        username: response.w3.U3,
+                                        email: response.w3.ofa + ' ' + response.w3.wea,
+                                        source: "google"
+                                    };
+                                    saveUserData(data);
+                                    $uibModalInstance.close();
                                 });
                             };
 
@@ -152,11 +184,6 @@ var homePageController = startupSmb.controller('homePageController',
                         }],
                     backdrop: 'static',
                     windowClass: "signupModal",
-                    resolve: {
-                        GoogleAuth: function () {
-                            return $scope.GoogleAuth
-                        }
-                    },
                     keyboard: false,
                     animation: true
 
@@ -166,7 +193,6 @@ var homePageController = startupSmb.controller('homePageController',
 
             // Load the JavaScript SDK asynchronously
             (function (d, s, id) {
-                $rootScope.loader = true;
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id)) return;
                 js = d.createElement(s);
@@ -185,7 +211,6 @@ var homePageController = startupSmb.controller('homePageController',
                             "username": response.first_name + ' ' + response.last_name,
                             "source": "FB"
                         };
-                        $rootScope.loader = false;
                         saveUserData(userData);
                     });
             }
