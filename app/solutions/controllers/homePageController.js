@@ -12,7 +12,7 @@ var homePageController = startupSmb.controller('homePageController',
                 if (!$scope.userLoggedIn && $('.signupModal').length == 0) {
                     $scope.openRegisterModal();
                 }
-            }, 10000);
+            }, 1000);
 
             //if user went without register show popup every after 10 min
             var showModal = $interval(function () {
@@ -51,7 +51,7 @@ var homePageController = startupSmb.controller('homePageController',
                         $interval.cancel(gInit);
                     });
                 }
-            }, 1000);
+            }, 500);
 
             //FB code
             window.fbAsyncInit = function () {
