@@ -92,9 +92,7 @@ var homePageController = startupSmb.controller('homePageController',
                                 expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
                                 $cookies.put('loggedIn', true, {'expires': expireDate});
                                 $scope.signUpDetails = {};
-                                $timeout(function () {
-                                    $scope.userLoggedIn = true;
-                                });
+                                $scope.userLoggedIn = true;
                                 $uibModalInstance.close();
                             };
 

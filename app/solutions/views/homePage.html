@@ -29,7 +29,8 @@
                 </div>
             </div>
             <div class="userIcons pull-right ng-hide">
-                <a href="javascript:void(0)" ng-click="openRegisterModal();" class="loginBtn">Register now</a>
+                <a href="javascript:void(0)" ng-show="!userLoggedIn" ng-click="openRegisterModal();" class="loginBtn">Register
+                    now</a>
                 <a href="" class="socialIcon ng-hide">
                     <img src="images/1-FB.png">
                 </a>
@@ -1354,7 +1355,6 @@
                 <h2>SMB Startup Pack</h2>
                 <h4>Apps and Solutions on CSD open platform</h4>
             </div>
-
             <a href="javascript:void(0)" ng-show="!userLoggedIn" ng-click="openRegisterModal();" class="magenta-btn">Register
                 Now</a>
         </div>
