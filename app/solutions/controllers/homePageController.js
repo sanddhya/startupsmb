@@ -286,7 +286,7 @@ var homePageController = startupSmb.controller('homePageController',
                 },
                 {
                     "name": "Small hyperlocal food delivery business",
-                    "icon": "Small Hyperlocal image.png",
+                    "icon": "pizza.png",
                     "desc": "Ben is an owner of a popular local Pizzeria. His sales are predominantly offline with a growing online delivery business",
                     "questions": [
                         "How do I get discovered locally and target my customers?",
