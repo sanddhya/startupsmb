@@ -196,6 +196,8 @@ section#profiles::after {
     width: 100%;
     height: 100%;
     background-image: url("images/Group 15.png");
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
     top: 0;
     left: 0;
     z-index: 0;
@@ -536,6 +538,46 @@ section#startUpKit p.topHeading{
     color: #3e53a4;
     font-size: 16px;
     margin-top: 10px;
+}
+.verticalBox label{
+    margin: 0;
+    margin-left: 15px;
+}
+.verticalBox{
+    margin-left: 50px;
+}
+section#aboutPb{
+    padding: 100px 0;
+}
+section#whyPb {
+    padding: 100px 0;
+    background-color: #e1e1e1;
+    background-image: url(images/newIcons/img.png);
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+section#whyPb p{
+    font-size: 18px;
+    color: #2e2e2e;
+}
+section#aboutPb h1{
+    text-align: center;
+    color: #3e53a4;
+    margin-top: 0;
+}
+.infos p{
+    font-size: 20px;
+    margin: 0 50px;
+}
+.infoBox{
+    text-align: center;
+}
+.infoBox .icon{
+    width: 120px;
+    margin: 20px auto;
+}
+.infoBox .icon img{
+    width: 100%;
 }
 @media only screen and (max-width: 991px) {
     .api-card{
