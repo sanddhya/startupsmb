@@ -265,9 +265,11 @@ var homePageController = startupSmb.controller('homePageController',
                         "Which solutions can I use to manage my documents and increase productivity"
                     ],
                     "similarProfiles": [
-                        "Accounting, & Legal firms",
+                        "Accounting & Legal firms",
                         "Healthcare Professionals",
-                        "Small Consulting firms"
+                        "Small Consulting firms",
+                        'Financial Institutions',
+                        'Insurance Agents'
                     ]
                 },
                 {
@@ -280,7 +282,7 @@ var homePageController = startupSmb.controller('homePageController',
                         "How do I improve my business productivity?"
                     ],
                     "similarProfiles": [
-                        "Small sized real-estate, manufacturing",
+                        "Small sized manufacturers",
                         "Distributors"
                     ]
                 },
