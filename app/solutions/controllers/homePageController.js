@@ -285,20 +285,6 @@ var homePageController = startupSmb.controller('homePageController',
                         "Small sized manufacturers",
                         "Distributors"
                     ]
-                },
-                {
-                    "name": "Small hyperlocal food delivery business",
-                    "icon": "pizza.png",
-                    "desc": "Ben is an owner of a popular local Pizzeria. His sales are predominantly offline with a growing online delivery business",
-                    "questions": [
-                        "How do I get discovered locally and target my customers?",
-                        "How can I scale my delivery business?",
-                        "What can I do to reduce my costs and drive more efficiency?"
-                    ],
-                    "similarProfiles": [
-                        "Small food outlets",
-                        "Local service businesses: laundry, groceries & home services"
-                    ]
                 }
             ];
 
