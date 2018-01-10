@@ -158,12 +158,19 @@ section#profiles h2 {
     bottom: 0;
     left: 0;
     height: 168px;
+    width: 100%;
 }
 
 section#profiles .desc, section#profiles .footer {
     padding: 10px;
 }
-
+.personaCarousal{
+    margin-top: 50px;
+    z-index: 9999;
+}
+.personaCarousal .slick-slide img{
+    display: inline-block;
+}
 .profile-card {
     height: 550px;
     box-shadow: 0px 0px 4px grey;
@@ -625,6 +632,13 @@ section.deviceSpecification .videoWrapper iframe{
 header .headings h1{
     font-size: 55px;
 }
+.showToMobile{
+    display: none;
+}
+.pbApiCarousal{
+    z-index: 9999;
+    margin-top: 30px;
+}
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
@@ -668,7 +682,18 @@ header .headings h1{
     section#resources,section#aboutPb,section#whyPb,section#quickStartGuide, section#profiles, section#innovationThemes, section#pbApis, section#startUpKit{
         padding: 50px 0;
     }
-    
+    .showToMobile{
+        display: block;
+    }
+    .showToDesktop{
+        display: none;
+    }
+    .questions{
+        height: auto;
+    }
+    .profile-card {
+        height: 600px;
+    }
 }
 @media only screen and (max-width: 679px) {
     header .overlay{

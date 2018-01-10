@@ -318,6 +318,14 @@ var homePageController = startupSmb.controller('homePageController',
                     slidesToScroll: numberOfSlide
 
                 });
+
+                $(".pbApiCarousal,.themeCarousal,.personaCarousal").slick({
+                    autoplay: true,
+                    autoplaySpeed: 1000,
+                    dots: true
+                    
+                });
+
             });
 
         }
