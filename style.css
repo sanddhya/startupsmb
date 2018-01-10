@@ -454,6 +454,7 @@ section.toolkitSection a{
 .signupModal .modal-content{
     width: 500px;
     margin: 0 auto;
+    padding: 40px;
 }
 
 .signupModal .modal-title{
