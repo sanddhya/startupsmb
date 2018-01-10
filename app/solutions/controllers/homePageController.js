@@ -273,13 +273,13 @@ var homePageController = startupSmb.controller('homePageController',
                     ]
                 },
                 {
-                    "name": "Mid-sized manufacturers",
+                    "name": "Healthcare Professionals",
                     "icon": "mid sized manufacturer image.png",
-                    "desc": "Directors/ department heads of mid-sized manufacturing company. Looking for more customer insights to manage his relationships better",
+                    "desc": "Healthcare Professionals looking for solutions to easily manage documents and billing information",
                     "questions": [
-                        "Which are the tools to enhance my customer insights and manage relationships",
-                        "How can I manage my documents securely and reduce shipping costs",
-                        "How do I improve my business productivity?"
+                        "Which solutions can I use to manage patients billing information?",
+                        "How can I easily manage my documents securely",
+                        "How do I integrate local taxes in my bills"
                     ],
                     "similarProfiles": [
                         "Small sized manufacturers",
@@ -290,6 +290,18 @@ var homePageController = startupSmb.controller('homePageController',
 
 
             $(document).ready(function () {
+                var numberOfSlide=5;
+               
+                if(window.matchMedia("only screen and (max-width: 600px)").matches){
+                    numberOfSlide=1;
+                }
+                else if(window.matchMedia("only screen and (max-width: 768px)").matches){
+                    numberOfSlide=2;
+                }
+                else if(window.matchMedia("only screen and (max-width: 1024px)").matches){
+                    numberOfSlide=3;
+                }
+                
 
                 $(".single-item").slick();
 
@@ -302,8 +314,8 @@ var homePageController = startupSmb.controller('homePageController',
 
                 $('.multiple-items').slick({
                     infinite: true,
-                    slidesToShow: 5,
-                    slidesToScroll: 5
+                    slidesToShow: numberOfSlide,
+                    slidesToScroll: numberOfSlide
 
                 });
             });

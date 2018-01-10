@@ -154,6 +154,10 @@ section#profiles h2 {
 .questions {
     background: #EBEBEB;
     padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 168px;
 }
 
 section#profiles .desc, section#profiles .footer {
@@ -161,7 +165,7 @@ section#profiles .desc, section#profiles .footer {
 }
 
 .profile-card {
-    height: 716px;
+    height: 550px;
     box-shadow: 0px 0px 4px grey;
     border-radius: 2px;
     position: relative;
@@ -211,7 +215,7 @@ section#profiles::after {
 .theme-card {
     padding: 15px 7px;
     box-shadow: 0 0 2px grey;
-    margin: 10px 0;
+    margin: 25px 0;
 }
 
 .theme-card img {
@@ -334,12 +338,11 @@ section#downloadCatlog {
 }
 
 section#downloadCatlog .btnWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 50px 0;
 }
-
+section#downloadCatlog .registerBtn{
+    float: right;
+}
 section#downloadCatlog h2 {
     margin: 0;
     color: #e1e1e1;
@@ -609,6 +612,7 @@ section.deviceSpecification .videoWrapper iframe{
     justify-content: center;
     width: 45px;
     height: 45px;
+    cursor: pointer;
 }
 .socialLinks .link a {
     color: #fff;
@@ -642,6 +646,28 @@ header .headings h1{
         padding-bottom: 50px;
         margin-bottom: 20px;
     }
+    .verticalBox {
+        margin-left: 0;
+    }
+    .profile-card{
+        margin-bottom: 15px;
+    }
+    .demoCard{
+        padding: 0;
+        width: 100%;
+    }
+    div.content{
+        width: 100%;
+    }
+    section#downloadCatlog .registerBtn{
+        float: none;
+        display: inline-block;
+        margin-top: 15px;
+    }
+    section#resources,section#aboutPb,section#whyPb,section#quickStartGuide, section#profiles, section#innovationThemes, section#pbApis, section#startUpKit{
+        padding: 50px 0;
+    }
+    
 }
 @media only screen and (max-width: 679px) {
     header .overlay{
@@ -658,6 +684,11 @@ header .headings h1{
 }
 @media only screen and (max-width: 464px) {
     header .headings h1{
-    font-size: 40px;
+        font-size: 40px;
+    }
 }
+@media only screen and (max-width: 396px) {
+    .signupModal h3.modal-title{
+        font-size: 17px;
+    }
 }
