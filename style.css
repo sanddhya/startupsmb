@@ -164,13 +164,6 @@ section#profiles h2 {
 section#profiles .desc, section#profiles .footer {
     padding: 10px;
 }
-.personaCarousal{
-    margin-top: 50px;
-    z-index: 9999;
-}
-.personaCarousal .slick-slide img{
-    display: inline-block;
-}
 .profile-card {
     height: 550px;
     box-shadow: 0px 0px 4px grey;
@@ -637,11 +630,18 @@ header .headings h1{
 }
 .pbApiCarousal,.themeCarousal,.personaCarousal{
         margin:0;
+        z-index: 999;
     }
 .pbApiCarousal{
-    z-index: 9999;
     margin-top: 30px;
 }
+.personaCarousal{
+    margin-top: 50px;
+}
+.personaCarousal .slick-slide img{
+    display: inline-block;
+}
+
 a.return-to-top{
         position: fixed;
         bottom: 50px;
