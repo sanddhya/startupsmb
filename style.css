@@ -635,10 +635,36 @@ header .headings h1{
 .showToMobile{
     display: none;
 }
+.pbApiCarousal,.themeCarousal,.personaCarousal{
+        margin:0;
+    }
 .pbApiCarousal{
     z-index: 9999;
     margin-top: 30px;
 }
+a.return-to-top{
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        font-size: 28px;
+        color: #9b9b9b;
+        background: transparent;
+        border-radius: 100%;
+        padding: 5px;
+        margin: 0;
+        line-height: 1;
+        z-index: 9999;
+        border: 2px solid;
+        transition: 0.5s all;
+        display: none;
+    }
+    a.return-to-top:hover {
+        color: #fff;
+        background: rgba(155,155,155,0.6);
+        border-color: #9b9b9b;
+    }
+
+
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
@@ -694,7 +720,12 @@ header .headings h1{
     .profile-card {
         height: 600px;
     }
+    a.return-to-top{
+        display: none;
+        opacity: 0;
+    }
 }
+
 @media only screen and (max-width: 679px) {
     header .overlay{
         position: relative;

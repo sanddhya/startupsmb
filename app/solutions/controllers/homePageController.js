@@ -1,11 +1,27 @@
 var homePageController = startupSmb.controller('homePageController',
-    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval',
-        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval) {
+    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval','$document','$window',
+        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval,$document,$window) {
 
-
+            $scope.showScrollToTopBtn = false;
             $scope.userLoggedIn = false;
             $rootScope.loader = true;
 
+            $scope.scrollToTop = function(){
+                $('html, body').animate({
+                      scrollTop: 0
+                  }, 'slow');
+            }
+
+            $document.on('scroll', function() {
+                if($window.scrollY>150){
+                    $('.return-to-top').fadeIn();
+                   
+                }else{
+                    
+                    $('.return-to-top').fadeOut();
+                }
+                
+            });
 
             $timeout(function () {
                 $rootScope.loader = false;
@@ -322,8 +338,8 @@ var homePageController = startupSmb.controller('homePageController',
                 $(".pbApiCarousal,.themeCarousal,.personaCarousal").slick({
                     autoplay: true,
                     autoplaySpeed: 1000,
-                    dots: true
-                    
+                    dots: true,
+                    arrows: false
                 });
 
             });
