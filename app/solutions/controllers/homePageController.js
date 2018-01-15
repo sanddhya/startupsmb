@@ -1,6 +1,6 @@
 var homePageController = startupSmb.controller('homePageController',
-    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval', '$window', '$stateParams',
-        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval, $window, $stateParams) {
+    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval', '$window', '$stateParams', '$document',
+        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval, $window, $stateParams, $document) {
 
             $scope.showScrollToTopBtn = false;
             $scope.userLoggedIn = false;
