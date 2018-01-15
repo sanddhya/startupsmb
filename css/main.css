@@ -15,6 +15,7 @@
     display: block;
     width: 100%;
     position: relative;
+    background: linear-gradient(to bottom, black 0%,black 85%,#000000 50%,white 50%,white 100%);
     /*background-image: url('../images/Sendpro C Series Image.png');*/
 }
 
@@ -23,6 +24,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: -1;
 }
 .deviceSpecification .backgroundImg img{
     width: 100%;
@@ -36,9 +38,16 @@
 .deviceSpecCard {
     background: white;
     position: relative;
-    padding: 10px;
+    padding: 20px;
     margin: auto;
     box-shadow: 0px 0px 6px grey;
+}
+.deviceSpecCard p {
+    color: black;
+    font-size: 16px;
+}
+.deviceSpecCard p.bold {
+    font-weight: bold;
 }
 
 .faqContainer {
@@ -146,7 +155,7 @@ h3 > span {
 }
 
 .qSectionLine {
-    padding: 9px;
+    padding: 5px;
 }
 
 .mainContentWrapper {
@@ -180,7 +189,7 @@ h3 > span {
     /*
     float: left;
     */
-    padding: 10px;
+    padding: 20px;
     width: 97%;
     height: 100%;
     overflow-y: auto;
@@ -223,7 +232,7 @@ h3 > span {
 }
 
 .appDesc, .appDescDevice {
-    margin-top: 10px;
+    margin-top: 20px;
     overflow-y: auto;
 }
 

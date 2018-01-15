@@ -2,7 +2,7 @@ var homePageController = startupSmb.controller('homePageController',
     ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval', '$window', '$stateParams',
         function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval, $window, $stateParams) {
 
-
+            $scope.showScrollToTopBtn = false;
             $scope.userLoggedIn = false;
             $rootScope.loader = true;
             var id = $window.location.search;
@@ -18,6 +18,22 @@ var homePageController = startupSmb.controller('homePageController',
                 console.log(response);
             }, function (err) {
                 console.log(err);
+            });
+
+            $scope.scrollToTop = function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 'slow');
+            }
+
+            $document.on('scroll', function () {
+                if ($window.scrollY > 150) {
+                    $('.return-to-top').fadeIn();
+
+                } else {
+
+                    $('.return-to-top').fadeOut();
+                }
             });
 
             $timeout(function () {
@@ -278,43 +294,43 @@ var homePageController = startupSmb.controller('homePageController',
                         "Which solutions can I use to manage my documents and increase productivity"
                     ],
                     "similarProfiles": [
-                        "Accounting, & Legal firms",
+                        "Accounting & Legal firms",
                         "Healthcare Professionals",
-                        "Small Consulting firms"
+                        "Small Consulting firms",
+                        'Financial Institutions',
+                        'Insurance Agents'
                     ]
                 },
                 {
-                    "name": "Mid-sized manufacturers",
+                    "name": "Healthcare Professionals",
                     "icon": "mid sized manufacturer image.png",
-                    "desc": "Directors/ department heads of mid-sized manufacturing company. Looking for more customer insights to manage his relationships better",
+                    "desc": "Healthcare Professionals looking for solutions to easily manage documents and billing information",
                     "questions": [
-                        "Which are the tools to enhance my customer insights and manage relationships",
-                        "How can I manage my documents securely and reduce shipping costs",
-                        "How do I improve my business productivity?"
+                        "Which solutions can I use to manage patients billing information?",
+                        "How can I easily manage my documents securely",
+                        "How do I integrate local taxes in my bills"
                     ],
                     "similarProfiles": [
-                        "Small sized real-estate, manufacturing",
+                        "Small sized manufacturers",
                         "Distributors"
-                    ]
-                },
-                {
-                    "name": "Small hyperlocal food delivery business",
-                    "icon": "Small Hyperlocal image.png",
-                    "desc": "Ben is an owner of a popular local Pizzeria. His sales are predominantly offline with a growing online delivery business",
-                    "questions": [
-                        "How do I get discovered locally and target my customers?",
-                        "How can I scale my delivery business?",
-                        "What can I do to reduce my costs and drive more efficiency?"
-                    ],
-                    "similarProfiles": [
-                        "Small food outlets",
-                        "Local service businesses: laundry, groceries & home services"
                     ]
                 }
             ];
 
 
             $(document).ready(function () {
+                var numberOfSlide = 5;
+
+                if (window.matchMedia("only screen and (max-width: 600px)").matches) {
+                    numberOfSlide = 1;
+                }
+                else if (window.matchMedia("only screen and (max-width: 768px)").matches) {
+                    numberOfSlide = 2;
+                }
+                else if (window.matchMedia("only screen and (max-width: 1024px)").matches) {
+                    numberOfSlide = 3;
+                }
+
 
                 $(".single-item").slick();
 
@@ -327,10 +343,18 @@ var homePageController = startupSmb.controller('homePageController',
 
                 $('.multiple-items').slick({
                     infinite: true,
-                    slidesToShow: 5,
-                    slidesToScroll: 5
+                    slidesToShow: numberOfSlide,
+                    slidesToScroll: numberOfSlide
 
                 });
+
+                $(".pbApiCarousal,.themeCarousal,.personaCarousal").slick({
+                    autoplay: true,
+                    autoplaySpeed: 1000,
+                    dots: true,
+                    arrows: false
+                });
+
             });
 
         }

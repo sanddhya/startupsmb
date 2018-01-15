@@ -154,14 +154,18 @@ section#profiles h2 {
 .questions {
     background: #EBEBEB;
     padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 168px;
+    width: 100%;
 }
 
 section#profiles .desc, section#profiles .footer {
     padding: 10px;
 }
-
 .profile-card {
-    height: 716px;
+    height: 550px;
     box-shadow: 0px 0px 4px grey;
     border-radius: 2px;
     position: relative;
@@ -196,6 +200,8 @@ section#profiles::after {
     width: 100%;
     height: 100%;
     background-image: url("images/Group 15.png");
+    background-size: 100% 70%;
+    background-repeat: no-repeat;
     top: 0;
     left: 0;
     z-index: 0;
@@ -209,7 +215,7 @@ section#profiles::after {
 .theme-card {
     padding: 15px 7px;
     box-shadow: 0 0 2px grey;
-    margin: 10px 0;
+    margin: 25px 0;
 }
 
 .theme-card img {
@@ -332,12 +338,11 @@ section#downloadCatlog {
 }
 
 section#downloadCatlog .btnWrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 50px 0;
 }
-
+section#downloadCatlog .registerBtn{
+    float: right;
+}
 section#downloadCatlog h2 {
     margin: 0;
     color: #e1e1e1;
@@ -352,6 +357,7 @@ section#downloadCatlog h2 {
 }
 .kit-card h4{
     color: #3e53a4;
+    font-size: 20px;
 }
 .kit-card li {
     color: #3e53a4;
@@ -362,7 +368,7 @@ section#downloadCatlog h2 {
 .kit-card{
     background: #fff;
     box-shadow: 0 0 2px grey;
-    padding: 10px;
+    padding: 15px;
 }
 span.bold{
     font-weight: bold;
@@ -379,10 +385,10 @@ span.bold{
     margin-top: 20px;
 }
 .kit-card.inner{
-    height: 410px;
+    height: 430px;
 }
 .kit-card.claim{
-    height: 535.78px;
+    height: 564px;
 }
 section#startUpKit{
     position: relative;
@@ -392,7 +398,7 @@ section#startUpKit .backgroundImg {
     width: 100%;
     position: absolute;
     left: 0;
-    top: 180px;
+    top: 200px;
 }
 section#startUpKit .backgroundImg img{
     width: 100%;
@@ -448,6 +454,7 @@ section.toolkitSection a{
 .signupModal .modal-content{
     width: 500px;
     margin: 0 auto;
+    padding: 40px;
 }
 
 .signupModal .modal-title{
@@ -516,9 +523,229 @@ section.toolkitSection a{
     font-weight: 600;
     text-decoration: none;
 }
+
+section#resources {
+    padding: 100px 0;
+    text-align: center;
+}
+section#resources label{
+    font-size: 20px;
+    color: #000;
+    margin: 15px 0;
+}
+section#resources  p{
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+section#startUpKit p.topHeading{
+    color: #3e53a4;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.verticalBox label{
+    margin: 0;
+    margin-left: 15px;
+}
+.verticalBox{
+    margin-left: 50px;
+}
+section#aboutPb{
+    padding: 100px 0;
+}
+section#whyPb {
+    padding: 100px 0;
+    background-color: #e1e1e1;
+    background-image: url(images/newIcons/img.png);
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+}
+section#whyPb p{
+    font-size: 18px;
+    color: #2e2e2e;
+}
+section#aboutPb h1{
+    text-align: center;
+    color: #3e53a4;
+    margin-top: 0;
+}
+.infos p{
+    font-size: 20px;
+    margin: 0 50px;
+}
+.infoBox{
+    text-align: center;
+}
+.infoBox .icon{
+    width: 120px;
+    margin: 20px auto;
+}
+.infoBox .icon img{
+    width: 100%;
+}
+section.deviceSpecification .videoWrapper{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0px;
+    height: 0;
+}
+section.deviceSpecification .videoWrapper iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+.socialLinks {
+    display: flex;
+    margin-top: 20px;
+}
+.socialLinks .link {
+    margin-right: 10px;
+    /* padding: 10px; */
+    border-radius: 100%;
+    color: #fff;
+    background: #2e2e2e;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+.socialLinks .link a {
+    color: #fff;
+    line-height: 0;
+}
+.socialLinks .link i {
+    padding: 0;
+}
+header .headings h1{
+    font-size: 55px;
+}
+.showToMobile{
+    display: none;
+}
+.pbApiCarousal,.themeCarousal,.personaCarousal{
+        margin:0;
+        z-index: 999;
+    }
+.pbApiCarousal{
+    margin-top: 30px;
+}
+.personaCarousal{
+    margin-top: 50px;
+}
+.personaCarousal .slick-slide img{
+    display: inline-block;
+}
+
+a.return-to-top{
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        font-size: 28px;
+        color: #9b9b9b;
+        background: transparent;
+        border-radius: 100%;
+        padding: 5px;
+        margin: 0;
+        line-height: 1;
+        z-index: 9999;
+        border: 2px solid;
+        transition: 0.5s all;
+        display: none;
+    }
+    a.return-to-top:hover {
+        color: #fff;
+        background: rgba(155,155,155,0.6);
+        border-color: #9b9b9b;
+    }
+
+
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
         margin-bottom: 15px;
+    }
+    section#whyPb{
+        background-image: none;
+    }
+    section#whyPb h1{
+        margin-top: 0;
+    }
+
+    .kit-card.claim {
+        height: auto;
+        padding-bottom: 50px;
+        margin-bottom: 20px;
+    }
+    .kit-card.inner {
+        height: auto;
+        padding-bottom: 50px;
+        margin-bottom: 20px;
+    }
+    .verticalBox {
+        margin-left: 0;
+    }
+    .profile-card{
+        margin-bottom: 15px;
+    }
+    .demoCard{
+        padding: 0;
+        width: 100%;
+    }
+    div.content{
+        width: 100%;
+    }
+    section#downloadCatlog .registerBtn{
+        float: none;
+        display: inline-block;
+        margin-top: 15px;
+    }
+    section#resources,section#aboutPb,section#whyPb,section#quickStartGuide, section#profiles, section#innovationThemes, section#pbApis, section#startUpKit{
+        padding: 50px 0;
+    }
+    .showToMobile{
+        display: block;
+    }
+    .showToDesktop{
+        display: none;
+    }
+    .questions{
+        height: auto;
+    }
+    .profile-card {
+        height: 600px;
+    }
+    a.return-to-top{
+        display: none;
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 679px) {
+    header .overlay{
+        position: relative;
+        background: #000;
+        padding: 50px 20px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .signupModal .modal-content {
+        width: 100%;
+        padding: 30px;
+    }
+}
+@media only screen and (max-width: 464px) {
+    header .headings h1{
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 396px) {
+    .signupModal h3.modal-title{
+        font-size: 17px;
     }
 }

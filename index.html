@@ -2,7 +2,7 @@
 <html style="height:100%" lang="en" class="no-js" xmlns:ng="http://angularjs.org">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>SMB Startup Pack</title>
     <meta name="google" value="notranslate">
     <meta http-equiv="Content-Language" content="en">
     <meta name="description" content="">
@@ -35,6 +35,16 @@
     <meta name="google-signin-client_id"
           content="454365355426-pbv3s7e3vtogppgfkavva2kbcasl6d26.apps.googleusercontent.com">
     <script src="services.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112071829-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+     
+      gtag('config', 'UA-112071829-1');
+    </script>
+
 </head>
 <body ng-app="startupSmb" ng-cloak style="height:100%">
 <div class="loading-overlay" ng-show="loader">
