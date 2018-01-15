@@ -1,11 +1,24 @@
 var homePageController = startupSmb.controller('homePageController',
-    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval',
-        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval) {
+    ['$scope', '$uibModal', '$timeout', 'serviceForApiCall', '$cookies', '$rootScope', '$interval', '$window', '$stateParams',
+        function ($scope, $uibModal, $timeout, serviceForApiCall, $cookies, $rootScope, $interval, $window, $stateParams) {
 
 
             $scope.userLoggedIn = false;
             $rootScope.loader = true;
+            var id = $window.location.search;
+            var userId = "";
 
+            if (id) {
+                userId = decodeURIComponent(id.replace('?id=', ''));
+            } else {
+                userId = $stateParams.id;
+            }
+
+            serviceForApiCall.sendPageLoadedEvent(userId).then(function (response) {
+                console.log(response);
+            }, function (err) {
+                console.log(err);
+            });
 
             $timeout(function () {
                 $rootScope.loader = false;
