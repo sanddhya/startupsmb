@@ -17,11 +17,13 @@ var homePageController = startupSmb.controller('homePageController',
                 campaign = $stateParams.campaign;
             }
 
-            serviceForApiCall.sendPageLoadedEvent(userId, campaign).then(function (response) {
-                console.log(response);
-            }, function (err) {
-                console.log(err);
-            });
+            if (userId && campaign) {
+                serviceForApiCall.sendPageLoadedEvent(userId, campaign).then(function (response) {
+                    console.log(response);
+                }, function (err) {
+                    console.log(err);
+                });
+            }
 
             $scope.scrollToTop = function () {
                 $('html, body').animate({
@@ -66,20 +68,20 @@ var homePageController = startupSmb.controller('homePageController',
                         );
                         //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
                         $rootScope.GoogleAuth = gapi.auth2.getAuthInstance();
-                   /*     $rootScope.GoogleAuth.currentUser.listen(function (currentUser) {
-                                if (currentUser.w3) {
-                                    if (currentUser) {
-                                        var data = {
-                                            username: currentUser.w3.ofa + ' ' + currentUser.w3.wea,
-                                            email: currentUser.w3.U3,
-                                            source: "google"
-                                        };
-                                        saveUserData(data);
-                                        $scope.userLoggedIn = true;
-                                    }
-                                }
-                            }
-                        );*/
+                        /*     $rootScope.GoogleAuth.currentUser.listen(function (currentUser) {
+                                     if (currentUser.w3) {
+                                         if (currentUser) {
+                                             var data = {
+                                                 username: currentUser.w3.ofa + ' ' + currentUser.w3.wea,
+                                                 email: currentUser.w3.U3,
+                                                 source: "google"
+                                             };
+                                             saveUserData(data);
+                                             $scope.userLoggedIn = true;
+                                         }
+                                     }
+                                 }
+                             );*/
                         $interval.cancel(gInit);
                     });
                 }
@@ -112,7 +114,6 @@ var homePageController = startupSmb.controller('homePageController',
                         templateUrl: 'thanksModal.html',
                         controller: ['$scope', '$uibModalInstance',
                             function ($scope, $uibModalInstance) {
-
                                 $scope.close = function () {
                                     $uibModalInstance.close();
                                 }
@@ -144,7 +145,6 @@ var homePageController = startupSmb.controller('homePageController',
                                 expireDate.setTime(expireDate.getTime() + (300 * 60 * 1000));
                                 $cookies.put('loggedIn', true, {'expires': expireDate});
                                 $scope.signUpDetails = {};
-                                $scope.userLoggedIn = true;
                             };
 
                             $scope.continueWithGoogle = function () {
@@ -155,7 +155,6 @@ var homePageController = startupSmb.controller('homePageController',
                                         email: response.w3.U3,
                                         source: "google"
                                     };
-                                    $scope.userLoggedIn = true;
                                     $uibModalInstance.close();
                                     saveUserData(data);
                                 });
@@ -270,11 +269,12 @@ var homePageController = startupSmb.controller('homePageController',
             //send data to backend
             function saveUserData(data) {
                 serviceForApiCall.saveUserData(data).then(function (value) {
-                    console.log('***********************' + value);
+                    $scope.userLoggedIn = true;
                     $scope.signUpDetails = {};
                     $scope.openThankYouModal();
                 }, function (err) {
                     if (err) {
+                        $scope.userLoggedIn = true;
                         $scope.signUpDetails = {};
                         $scope.openThankYouModal();
                     }
