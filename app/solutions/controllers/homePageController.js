@@ -132,8 +132,8 @@ var homePageController = startupSmb.controller('homePageController',
                                 //add a function to the controller so ng-click can bind to it
                                 $rootScope.GoogleAuth.signIn().then(function (response) {//request to sign in
                                     var data = {
-                                        username: response.w3.U3,
-                                        email: response.w3.ofa + ' ' + response.w3.wea,
+                                        username: response.w3.ofa + ' ' + response.w3.wea,
+                                        email: response.w3.U3,
                                         source: "google"
                                     };
                                     $scope.userLoggedIn = true;
