@@ -76,6 +76,7 @@ var homePageController = startupSmb.controller('homePageController',
                                         };
                                         saveUserData(data);
                                         $scope.userLoggedIn = true;
+                                        $scope.openThankYouModal();
                                     }
                                 }
                             }
@@ -105,6 +106,23 @@ var homePageController = startupSmb.controller('homePageController',
                     }
                 });
             };
+
+            $scope.openThankYouModal = function(){
+                $uibModal.open({
+                    templateUrl: 'thanksModal.html',
+                    controller: ['$scope','$uibModalInstance',
+                        function ($scope,$uibModalInstance) {
+
+                        $scope.close = function () {
+                                $uibModalInstance.close();
+                            }
+                        }],
+                    backdrop: 'static',
+                    windowClass: "thanksModal",
+                    keyboard: false,
+                    animation: true
+            });
+            }
 
             $scope.openRegisterModal = function () {
                 $uibModal.open({
