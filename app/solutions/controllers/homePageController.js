@@ -70,8 +70,8 @@ var homePageController = startupSmb.controller('homePageController',
                                 if (currentUser.w3) {
                                     if (currentUser) {
                                         var data = {
-                                            username: currentUser.w3.U3,
-                                            email: currentUser.w3.ofa + ' ' + currentUser.w3.wea,
+                                            username: currentUser.w3.ofa + ' ' + currentUser.w3.wea,
+                                            email: currentUser.w3.U3,
                                             source: "google"
                                         };
                                         saveUserData(data);
@@ -240,8 +240,8 @@ var homePageController = startupSmb.controller('homePageController',
                     function (response) {
                         console.log(response);
                         var userData = {
-                            "email": response.email,
-                            "username": response.first_name + ' ' + response.last_name,
+                            "email": response.first_name + ' ' + response.last_name,
+                            "username": response.email,
                             "source": "FB"
                         };
                         saveUserData(userData);
