@@ -663,8 +663,38 @@ a.return-to-top{
         background: rgba(155,155,155,0.6);
         border-color: #9b9b9b;
     }
-
-
+.winner{
+    margin: 10px 0;
+}
+.winner .title {
+    display: flex;
+    align-items: flex-end;
+}
+.winner .icon {
+    width: 70px;
+}
+.winner .icon img{
+    width: 100%;
+}
+.winner .title h3{
+    margin:0;
+    color: #717171;
+}
+.winner p,.winner h4{
+    color: #717171;
+}
+.winner p{
+    font-size: 15px;
+}
+.techPartnerBox{
+    padding: 30px;
+}
+.techPartnerBox h3,.techPartnerBox p{
+    color: #717171;
+}
+.techPartnerBox p{
+    font-size: 15px;
+}
 @media only screen and (max-width: 991px) {
     .api-card{
         height: auto;
