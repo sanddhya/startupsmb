@@ -5,7 +5,7 @@ startupSmb.config(['$stateProvider', '$urlRouterProvider',
 
         $stateProvider
             .state('home', {
-                url: '/home/?id',
+                url: '/home/?id&campaign',
                 templateUrl: 'app/solutions/views/homePage.html',
                 controller: 'homePageController'
             })

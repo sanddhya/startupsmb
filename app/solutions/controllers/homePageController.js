@@ -5,16 +5,19 @@ var homePageController = startupSmb.controller('homePageController',
             $scope.showScrollToTopBtn = false;
             $scope.userLoggedIn = false;
             $rootScope.loader = true;
-            var id = $window.location.search;
-            var userId = "";
 
-            if (id) {
-                userId = decodeURIComponent(id.replace('?id=', ''));
-            } else {
+            var userId = "";
+            var campaign = "";
+
+            if ($stateParams.id) {
                 userId = $stateParams.id;
             }
 
-            serviceForApiCall.sendPageLoadedEvent(userId).then(function (response) {
+            if ($stateParams.campaign) {
+                campaign = $stateParams.campaign;
+            }
+
+            serviceForApiCall.sendPageLoadedEvent(userId, campaign).then(function (response) {
                 console.log(response);
             }, function (err) {
                 console.log(err);
