@@ -10,6 +10,15 @@ startupSmb.factory('serviceForApiCall', ['$http', function ($http) {
 
         sendPageLoadedEvent: function (id, campaign) {
             return $http.get('https://ad-tracker-standard-dot-datatest-148118.appspot.com/developer?idx=' + id + ' &event=landed&campaign=' + campaign);
+        },
+
+        saveUserData: function (data) {
+            return $http.post('http://smbstartuppack-dot-datatest-148118.appspot.com/smb/registeruser', data, {
+                headers: {
+                    "accept": "application/json"
+                }
+            });
         }
     }
+
 }]);

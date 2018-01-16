@@ -66,7 +66,7 @@ var homePageController = startupSmb.controller('homePageController',
                         );
                         //get's a GoogleAuth instance with your client-id, needs to be called after gapi.auth2.init
                         $rootScope.GoogleAuth = gapi.auth2.getAuthInstance();
-                        $rootScope.GoogleAuth.currentUser.listen(function (currentUser) {
+                   /*     $rootScope.GoogleAuth.currentUser.listen(function (currentUser) {
                                 if (currentUser.w3) {
                                     if (currentUser) {
                                         var data = {
@@ -76,11 +76,10 @@ var homePageController = startupSmb.controller('homePageController',
                                         };
                                         saveUserData(data);
                                         $scope.userLoggedIn = true;
-                                        $scope.openThankYouModal();
                                     }
                                 }
                             }
-                        );
+                        );*/
                         $interval.cancel(gInit);
                     });
                 }
@@ -107,21 +106,23 @@ var homePageController = startupSmb.controller('homePageController',
                 });
             };
 
-            $scope.openThankYouModal = function(){
-                $uibModal.open({
-                    templateUrl: 'thanksModal.html',
-                    controller: ['$scope','$uibModalInstance',
-                        function ($scope,$uibModalInstance) {
+            $scope.openThankYouModal = function () {
+                if ($('.thanksModal').length == 0) {
+                    $uibModal.open({
+                        templateUrl: 'thanksModal.html',
+                        controller: ['$scope', '$uibModalInstance',
+                            function ($scope, $uibModalInstance) {
 
-                        $scope.close = function () {
-                                $uibModalInstance.close();
-                            }
-                        }],
-                    backdrop: 'static',
-                    windowClass: "thanksModal",
-                    keyboard: false,
-                    animation: true
-            });
+                                $scope.close = function () {
+                                    $uibModalInstance.close();
+                                }
+                            }],
+                        backdrop: 'static',
+                        windowClass: "thanksModal",
+                        keyboard: false,
+                        animation: true
+                    });
+                }
             }
 
             $scope.openRegisterModal = function () {
@@ -136,6 +137,7 @@ var homePageController = startupSmb.controller('homePageController',
 
                             $scope.signUp = function () {
                                 var data = angular.extend({"source": "self"}, $scope.signUpDetails);
+                                $uibModalInstance.close();
                                 saveUserData(data);
                                 var expireDate = new Date();
                                 //after 5 hrs automatically signout
@@ -143,7 +145,6 @@ var homePageController = startupSmb.controller('homePageController',
                                 $cookies.put('loggedIn', true, {'expires': expireDate});
                                 $scope.signUpDetails = {};
                                 $scope.userLoggedIn = true;
-                                $uibModalInstance.close();
                             };
 
                             $scope.continueWithGoogle = function () {
@@ -155,8 +156,8 @@ var homePageController = startupSmb.controller('homePageController',
                                         source: "google"
                                     };
                                     $scope.userLoggedIn = true;
-                                    saveUserData(data);
                                     $uibModalInstance.close();
+                                    saveUserData(data);
                                 });
                             };
 
@@ -268,14 +269,14 @@ var homePageController = startupSmb.controller('homePageController',
 
             //send data to backend
             function saveUserData(data) {
-                $.post({
-                    url: "http://smbstartuppack-dot-datatest-148118.appspot.com/smb/registeruser",
-                    method: 'POST',
-                    contentType: "application/json",
-                    data: JSON.stringify(data),
-                    success: function (res) {
-                        console.log(res);
+                serviceForApiCall.saveUserData(data).then(function (value) {
+                    console.log('***********************' + value);
+                    $scope.signUpDetails = {};
+                    $scope.openThankYouModal();
+                }, function (err) {
+                    if (err) {
                         $scope.signUpDetails = {};
+                        $scope.openThankYouModal();
                     }
                 });
             }
