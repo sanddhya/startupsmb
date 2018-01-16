@@ -428,7 +428,7 @@ section#startUpKit .backgroundImg img{
     margin: 10px 0;
 }
 #pbRecoveryLib .container-fluid{
-    box-shadow: 2px 2px 2px #c0c0c0;
+    /* box-shadow: 2px 2px 2px #c0c0c0; */
 }
 #pbRecoveryLib {
     padding-bottom: 50px;
@@ -687,13 +687,17 @@ a.return-to-top{
     font-size: 15px;
 }
 .techPartnerBox{
-    padding: 30px;
+    padding: 60px 30px;
 }
 .techPartnerBox h3,.techPartnerBox p{
     color: #717171;
 }
 .techPartnerBox p{
     font-size: 15px;
+}
+
+#pbRecoveryLib .slick-prev::before,#pbRecoveryLib .slick-next::before{
+    color: #4e4e4e;
 }
 @media only screen and (max-width: 991px) {
     .api-card{
