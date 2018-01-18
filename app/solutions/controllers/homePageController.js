@@ -150,11 +150,14 @@ var homePageController = startupSmb.controller('homePageController',
                             $scope.continueWithGoogle = function () {
                                 //add a function to the controller so ng-click can bind to it
                                 $rootScope.GoogleAuth.signIn().then(function (response) {//request to sign in
+                                    var profile = response.getBasicProfile();
                                     var data = {
-                                        username: response.w3.ofa + ' ' + response.w3.wea,
-                                        email: response.w3.U3,
+                                        username: profile.getName(),
+                                        email: profile.getEmail(),
                                         source: "google"
                                     };
+                                    console.log("Google User");
+                                    console.log(data);
                                     $uibModalInstance.close();
                                     saveUserData(data);
                                 });
