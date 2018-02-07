@@ -7,12 +7,16 @@ section#pbPartnerResource{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 30px;
 }
 .resBox{
     width: 240px;
     margin: 10px;
     border: 1px solid #fff;
     background: rgba(256,256,256,0.2);
+}
+.resBox a{
+    text-decoration: none;
 }
 .resBox .icon{
     background: #fff;
