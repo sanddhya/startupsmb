@@ -1,7 +1,109 @@
+.contactUs{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.contactUs span{
+    color: #fff;
+    font-size: 17px;
+}
+.contactUs .icon{
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 100%;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contactUs .icon img{
+    width: 70%;
+}
+section#pbStartProgram{
+    background: #F0F0F0;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+section#pbStartProgram .points>div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+section#pbStartProgram .points p{
+    padding: 0 20px;
+    position: relative;
+    font-size: 18px;
+    color: #3e53a4;
+    font-weight: bold;
+}
+section#pbStartProgram .points p:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #cf0989;
+    border-radius: 100%;
+    left: -3px;
+    top: 4px;
+}
+section#pbStartProgram .points{
+    margin: 50px 0;
+}
 section#pbPartnerResource{
     background-image: url(images/BG.jpg);
     padding-top: 50px;
     padding-bottom: 100px;
+}
+.program-steps{
+    position: relative;
+}
+.program-steps .bgImage{
+    position: absolute;
+    width: 100%;
+    top: 108px;
+}
+.stepBoxes{
+    padding: 0 50px;
+}
+.program-steps .bgImage img{
+    width: 100%
+}
+.stepBox{
+    padding: 0 20px;
+    margin: 20px 0;
+    position: relative;
+}
+.stepBox.step1:after{
+        content: "Ideas";
+    position: absolute;
+    right: -30px;
+    color: #cf0989;
+    font-size: 15px;
+    font-weight: bo;
+    text-align: center;
+    top: 115px;
+}
+.stepBox.step2:after{
+    content: "Market Access";
+    position: absolute;
+    right: -70px;
+    color: #cf0989;
+    font-size: 15px;
+    font-weight: bo;
+    text-align: center;
+    top: 115px;
+}
+.stepBox p{
+   font-size: 17px;
+
+}
+.stepBox .icon{
+    width:190px;
+    margin: 20px auto;
+}
+.stepBox .icon img{
+    width:100%;
 }
 .resWrapper{
     display: flex;
@@ -746,6 +848,13 @@ a.return-to-top{
     padding: 60px;
 }
 @media only screen and (max-width: 991px) {
+    .stepBox.step1:after,.stepBox.step2:after{
+        display: none;
+    }
+    .program-steps .bgImage{
+        display: none;
+
+    }
     .api-card{
         height: auto;
         margin-bottom: 15px;
